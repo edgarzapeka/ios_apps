@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var switchTempType: UISegmentedControl!
     @IBOutlet weak var converterTitle: UILabel?
     @IBOutlet weak var temperatureTypeTitle: UILabel?
-    @IBOutlet weak var selectedTempTypeLabel: UILabel?
     @IBOutlet weak var selectedTempTypeValueLabel: UILabel?
     @IBOutlet weak var convertedTempTypeLabel: UILabel?
     @IBOutlet weak var convertedTempTypeValueLabel: UILabel?
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField?
+    @IBOutlet weak var stepperField: UIStepper?
+    
+    @IBOutlet weak var roundLabel: UILabel!
+    
+    var selectedTempType: String = "Celcius"
+    var switcherVal : Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +36,22 @@ class ViewController: UIViewController {
     @IBAction func switchType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.selectedTempTypeLabel?.text = "Celcius"
+            selectedTempType = "Celcius"
             self.convertedTempTypeLabel?.text = "Farenheit"
             calculateTmp()
         case 1:
-            self.selectedTempTypeLabel?.text = "Farenheit"
+            selectedTempType = "Farenheit"
             self.convertedTempTypeLabel?.text = "Celcius"
             calculateTmp()
         default:
-            self.selectedTempTypeLabel?.text = "Celcius"
-            self.convertedTempTypeLabel?.text = "Farenheit"
+            selectedTempType = "Celcius"
         }
     }
     
+    @IBAction func switchAction(_ sender: UISwitch) {
+        switcherVal = sender.isOn
+        calculateTmp()
+    }
     
     func initUI(){
         self.converterTitle?.text = "Temperature Converter"
@@ -53,27 +62,52 @@ class ViewController: UIViewController {
         self.temperatureTypeTitle?.font = self.temperatureTypeTitle?.font.withSize(20)
         self.temperatureTypeTitle?.textAlignment = .center
         
+        self.selectedTempTypeValueLabel?.font = self.converterTitle?.font.withSize(24)
+        self.selectedTempTypeValueLabel?.textAlignment = .center
+        
+        self.convertedTempTypeLabel?.font = self.converterTitle?.font.withSize(24)
+        self.convertedTempTypeLabel?.textAlignment = .center
+        
+        self.roundLabel.text = "Round result?"
+        self.roundLabel?.font = self.converterTitle?.font.withSize(24)
+        self.roundLabel?.textAlignment = .center
+        
         let titles = ["Celcius", "Farenheit"]
         self.switchTempType?.setTitle(titles[0], forSegmentAt: 0)
         self.switchTempType?.setTitle(titles[1], forSegmentAt: 1)
         
-        self.selectedTempTypeLabel?.text = "Celcius"
         self.convertedTempTypeLabel?.text = "Farenheit"
+        selectedTempTypeValueLabel?.text = "0"
+        calculateTmp()
+        stepperField?.value = 0
     }
     
     @IBAction func handleInput(_ sender: UITextField) {
-        self.selectedTempTypeValueLabel?.text = sender.text
+        if (sender.text == nil || sender.text == ""){
+            selectedTempTypeValueLabel!.text = "0"
+            stepperField?.value = 0
+        }else{
+            selectedTempTypeValueLabel!.text = Double(sender.text!)!.description
+            stepperField?.value = Double(sender.text!)!
+            
+        }
+        
         calculateTmp()
     }
     func calculateTmp(){
         var inputValue: Float = (self.selectedTempTypeValueLabel?.text as! NSString).floatValue
-        if (self.selectedTempTypeLabel?.text == "Celcius"){
-            self.convertedTempTypeValueLabel?.text = String(inputValue * 9/5 + 32)
+        if (selectedTempType == "Celcius"){
+            self.convertedTempTypeValueLabel?.text =  switcherVal ? String(round(inputValue * 9/5 + 32)) : String(inputValue * 9/5 + 32)
         }else{
-            self.convertedTempTypeValueLabel?.text = String(inputValue * 1.8 + 32 )
+            self.convertedTempTypeValueLabel?.text =  switcherVal ? String(round(inputValue - 32 * 5/9)) : String(inputValue - 32 * 5/9)
         }
     }
 
+    @IBAction func stepperAction(_ sender: UIStepper) {
+        selectedTempTypeValueLabel?.text = sender.value.description
+        calculateTmp()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
