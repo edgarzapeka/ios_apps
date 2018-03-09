@@ -17,13 +17,27 @@ class NoteDetailViewController: UIViewController {
     
     
     var noteTitle: String = ""
+    var noteDate: Date = Date.init()
+    var noteBody: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchNote()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        self.dateValue.text = dateFormatter.string(from: self.noteDate)
+        self.titleValue.text = self.noteTitle
+        self.descriptionValue.text = self.noteBody
+        // Do any additional setup after loading the view.
+    }
+    
+    func fetchNote(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         request.returnsObjectsAsFaults = false
         
@@ -31,16 +45,26 @@ class NoteDetailViewController: UIViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject]{
                 if ((data.value(forKey: "title") as! String) == noteTitle){
-                    self.dateValue.text = (data.value(forKey: "date") as! Date).description
-                    self.descriptionValue.text = data.value(forKey: "body") as! String
-                    self.titleValue.text = noteTitle
+                    self.noteDate = data.value(forKey: "date") as! Date
+                    self.noteBody = data.value(forKey: "body") as! String
                     break
                 }
             }
         }catch{
             print("failed to fetch data")
         }
-        // Do any additional setup after loading the view.
+    }
+
+    @IBAction func editRecord(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "editNote", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let editNote = segue.destination as! EditNoteViewController
+        editNote.noteTitle = self.noteTitle
+        editNote.noteBody = self.noteBody
+        editNote.noteDate = self.noteDate
     }
 
     @IBAction func deleteRecord(_ sender: UIButton) {
@@ -51,7 +75,6 @@ class NoteDetailViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             
-            // Do any additional setup after loading the view, typically from a nib.
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
             request.returnsObjectsAsFaults = false
             

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00326BE92052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BE62052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png */; };
+		00326BEA2052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BE72052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png */; };
+		00326BEB2052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BE82052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png */; };
+		00326BEF205260D900793D3E /* add_note-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BEC205260D800793D3E /* add_note-20@3x.png */; };
+		00326BF0205260D900793D3E /* add_note-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BED205260D800793D3E /* add_note-20.png */; };
+		00326BF1205260D900793D3E /* add_note-20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00326BEE205260D900793D3E /* add_note-20@2x.png */; };
+		00326BF32052620800793D3E /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00326BF22052620800793D3E /* EditNoteViewController.swift */; };
 		003CB0432051C63C0010526A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB0422051C63C0010526A /* AppDelegate.swift */; };
 		003CB0452051C63C0010526A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB0442051C63C0010526A /* ViewController.swift */; };
 		003CB0482051C63C0010526A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 003CB0462051C63C0010526A /* Main.storyboard */; };
@@ -18,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00326BE62052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png"; sourceTree = "<group>"; };
+		00326BE72052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png"; sourceTree = "<group>"; };
+		00326BE82052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png"; sourceTree = "<group>"; };
+		00326BEC205260D800793D3E /* add_note-20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_note-20@3x.png"; sourceTree = "<group>"; };
+		00326BED205260D800793D3E /* add_note-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_note-20.png"; sourceTree = "<group>"; };
+		00326BEE205260D900793D3E /* add_note-20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_note-20@2x.png"; sourceTree = "<group>"; };
+		00326BF22052620800793D3E /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		003CB03F2051C63C0010526A /* SimpleNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		003CB0422051C63C0010526A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		003CB0442051C63C0010526A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,9 +55,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00326BE52052604A00793D3E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				00326BED205260D800793D3E /* add_note-20.png */,
+				00326BEE205260D900793D3E /* add_note-20@2x.png */,
+				00326BEC205260D800793D3E /* add_note-20@3x.png */,
+				00326BE82052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png */,
+				00326BE62052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png */,
+				00326BE72052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		003CB0362051C63C0010526A = {
 			isa = PBXGroup;
 			children = (
+				00326BE52052604A00793D3E /* images */,
 				003CB0412051C63C0010526A /* SimpleNotes */,
 				003CB0402051C63C0010526A /* Products */,
 			);
@@ -69,6 +97,7 @@
 				003CB0492051C63C0010526A /* SimpleNotes.xcdatamodeld */,
 				003CB0572051C8930010526A /* AddNoteViewController.swift */,
 				003CB0592051DBAE0010526A /* NoteDetailViewController.swift */,
+				00326BF22052620800793D3E /* EditNoteViewController.swift */,
 			);
 			path = SimpleNotes;
 			sourceTree = "<group>";
@@ -133,8 +162,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				003CB0502051C63C0010526A /* LaunchScreen.storyboard in Resources */,
+				00326BEF205260D900793D3E /* add_note-20@3x.png in Resources */,
+				00326BE92052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@2x.png in Resources */,
+				00326BF1205260D900793D3E /* add_note-20@2x.png in Resources */,
+				00326BEA2052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20@3x.png in Resources */,
 				003CB04D2051C63C0010526A /* Assets.xcassets in Resources */,
+				00326BEB2052605800793D3E /* Checklist_List_Todo_Notes_Note_Task_Tasks-128-20.png in Resources */,
 				003CB0482051C63C0010526A /* Main.storyboard in Resources */,
+				00326BF0205260D900793D3E /* add_note-20.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +184,7 @@
 				003CB0452051C63C0010526A /* ViewController.swift in Sources */,
 				003CB05A2051DBAE0010526A /* NoteDetailViewController.swift in Sources */,
 				003CB0432051C63C0010526A /* AppDelegate.swift in Sources */,
+				00326BF32052620800793D3E /* EditNoteViewController.swift in Sources */,
 				003CB04B2051C63C0010526A /* SimpleNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
